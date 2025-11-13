@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANTI-CORRUPTION PERSONALITY QUIZ - VIT-AP UNIVERSITY</title>
+<style>
+    body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #fdf6e3; /* Cream background */
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        text-align: center;
+        background-color: #e9e2c9;
+        border-bottom: 4px solid #b7a469;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+        letter-spacing: 1px;
+        font-weight: 700;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .container {
+        max-width: 850px;
+        margin: 30px auto;
+        padding: 25px;
+        background-color: #fffaf0;
+        border-radius: 12px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+    }
+
+    .question {
+        background-color: #f8f4e5;
+        padding: 20px;
+        border: 1px solid #d6c9a4;
+        border-radius: 10px;
+        margin-bottom: 25px;
+    }
+
+    .question h3 {
+        text-transform: uppercase;
+        color: #4a4032;
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    .option {
+        display: flex;
+        align-items: center;
+        border: 2px solid #d6c9a4;
+        border-radius: 6px;
+        padding: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        background-color: #ffffff;
+        transition: background 0.3s;
+    }
+
+    .option:hover {
+        background-color: #f3e9d2;
+    }
+
+    input[type="radio"] {
+        width: 22px;
+        height: 22px;
+        margin-right: 10px;
+        accent-color: #8b7a5b;
+        cursor: pointer;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        font-size: 18px;
+        background-color: #b8a97f;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 20px;
+    }
+
+    button:hover {
+        background-color: #9d8c67;
+    }
+
+    #result {
+        text-align: center;
+        margin-top: 25px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #4a4032;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 40px;
+        padding: 15px;
+        font-size: 14px;
+        background-color: #e9e2c9;
+        border-top: 2px solid #b7a469;
+    }
+
+    footer span {
+        display: block;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>VIT-AP UNIVERSITY</h1>
+    <h1>ANTI-CORRUPTION PERSONALITY QUIZ</h1>
+</header>
+
+<div class="container" id="quiz">
+    <!-- Questions -->
+</div>
+
+<div id="result"></div>
+
+<footer>
+    <p>CREDITS:</p>
+    <span>MALIPEDDI KARTHIK - 24BEC7127</span>
+    <span>LAB SLOT: L22 + L23</span>
+    <p>THANK YOU FOR PARTICIPATING!</p>
+</footer>
+
+<script>
+const questions = [
+    {q: "YOU FIND ₹500 ON A DESK LABELED 'FOR DEPARTMENT USE ONLY'. WHAT DO YOU DO?",
+     options: ["Inform the department immediately.","Keep it safe and return it later.","Take it, assuming it’s unused.","Ignore it and walk away silently."],
+     correct: [0,1]},
+    {q: "YOUR CLASSMATE OFFERS A GIFT IF YOU SHARE INTERNAL EXAM ANSWERS. YOU WILL…",
+     options: ["Refuse politely and report it if repeated.","Decline but stay silent.","Share answers—it’s just one test.","Accept the gift and help."],
+     correct: [0,1]},
+    {q: "A TRAFFIC OFFICER STOPS YOU FOR NOT WEARING A HELMET. YOU…",
+     options: ["Accept your mistake and pay the fine properly.","Try to explain and avoid the fine.","Offer a small bribe to escape.","Argue until the officer lets you go."],
+     correct: [0]},
+    {q: "YOU LEARN YOUR RELATIVE GOT A JOB THROUGH INFLUENCE. YOU…",
+     options: ["Feel disappointed and speak about fairness.","Accept it but avoid supporting such acts.","Think it’s a common thing.","Try to find your own contacts too."],
+     correct: [0,1]},
+    {q: "YOU ARE OFFERED A REWARD FOR DOING A WRONG FAVOR AT WORK. YOU…",
+     options: ["Refuse and explain your reasons clearly.","Decline quietly.","Consider it—everyone does it sometimes.","Accept if no one will find out."],
+     correct: [0,1]},
+    {q: "YOU WITNESS A FRIEND CHEATING IN AN EXAM. YOU…",
+     options: ["Stop them immediately.","Inform the invigilator quietly.","Ignore—it’s not your problem.","Join them to avoid being left behind."],
+     correct: [0,1]},
+    {q: "YOU NOTICE AN OFFICIAL DOCUMENT BEING SIGNED WITHOUT READING. YOU…",
+     options: ["Ask to review it carefully.","Remain silent but feel uneasy.","Sign too without checking.","Encourage others to finish quickly."],
+     correct: [0]},
+    {q: "A LOCAL POLITICIAN OFFERS YOU FREE GIFTS IN EXCHANGE FOR YOUR VOTE. YOU…",
+     options: ["Refuse and vote for genuine work.","Accept but still vote honestly.","Take the gift and vote as told.","Avoid voting altogether."],
+     correct: [0]},
+    {q: "THE SHOPKEEPER RETURNS EXTRA CHANGE BY MISTAKE. YOU…",
+     options: ["Return it immediately.","Tell him next time you visit.","Keep it—it’s a small amount.","Say nothing and walk away."],
+     correct: [0,1]},
+    {q: "YOUR COLLEGE EVENT COLLECTS FUNDS, BUT A MEMBER USES IT PERSONALLY. YOU…",
+     options: ["Report it to the coordinator.","Speak to the member directly.","Ignore—it’s not your money.","Support them silently."],
+     correct: [0,1]}
+];
+
+const quizContainer = document.getElementById("quiz");
+questions.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.innerHTML = `<h3>Q${i+1}. ${q.q}</h3>` +
+        q.options.map((opt, j) =>
+            `<label class="option"><input type="radio" name="q${i}" value="${j}">${opt}</label>`
+        ).join("");
+    quizContainer.appendChild(div);
+});
+
+const btn = document.createElement("button");
+btn.textContent = "SUBMIT QUIZ";
+btn.onclick = showResult;
+quizContainer.appendChild(btn);
+
+function showResult() {
+    let score = 0;
+    questions.forEach((q, i) => {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected && q.correct.includes(parseInt(selected.value))) score++;
+    });
+
+    let message = "";
+    if (score >= 9) message = " INTEGRITY CHAMPION – You stand firm on honesty!";
+    else if (score >= 7) message = "STRONGLY PRINCIPLED – You choose the right path even when it’s not easy.";
+    else if (score >= 4) message = " DEVELOPING INTEGRITY – You’re aware but need more courage to act always right.";
+    else message = " NEEDS REFLECTION – Recognize the impact of small dishonest acts — change starts now.";
+
+    document.getElementById("result").innerHTML = `
+        <p>YOUR SCORE: ${score}/10</p>
+        <p>${message}</p>
+        <p>THANK YOU FOR PARTICIPATING IN THE ANTI-CORRUPTION QUIZ!</p>`;
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
